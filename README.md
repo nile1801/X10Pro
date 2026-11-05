@@ -231,3 +231,8 @@ Nếu Wi-Fi vẫn phát sóng nhưng không cấp DHCP sau khi sửa cấu hình
 ## Nguyên lý
 
 BusyBox udhcpd nạp cấu hình nằm trên /data khi hotspot khởi chạy. Với auto_time và notify_file, sau mỗi đợt ghi lease, udhcpd gọi callback. Callback tự tính Blue Q12 và giá trị backlight rồi chỉ ghi nếu khác mục tiêu. Đây là boot hook gián tiếp thông qua DHCP, không phải patch firmware; khi Wi-Fi/DHCP tắt, không còn điểm kích hoạt.
+
+
+## RGB Web UI (experimental)
+
+Có thể chỉnh RGB/backlight trực tiếp trên X10Pro qua BusyBox HTTP CGI, không flash firmware. Xem [hướng dẫn và mã nguồn Web UI](./webui/README.md). **Chưa kiểm chứng toàn bộ quy trình cài và điều chỉnh R/G trên camera thật; hãy kiểm tra quyền truy cập và sao lưu trước khi dùng.**
