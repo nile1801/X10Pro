@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X10Pro Display Control</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Arial,sans-serif;background:#0d121b;color:#eaf0fa}
+*{box-sizing:border-box}body{max-width:580px;margin:0 auto;padding:20px 16px 50px}
+h1{font-size:24px;margin:0 0 5px}small,.sub{color:#97a5ba}.sub{font-size:13px;margin-bottom:24px}
+.card{background:#161f2e;border:1px solid #28374b;border-radius:17px;padding:20px;margin:14px 0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.row strong{font-variant-numeric:tabular-nums}h2{font-size:14px;margin:0 0 14px;color:#b2c1d7}
+.group{margin:20px 0}.group:first-child{margin-top:6px}
+input[type=range]{width:100%;accent-color:var(--accent,#719fff);cursor:pointer;margin:12px 0 2px}
+.preview{height:105px;border-radius:12px;border:1px solid #455161;background:rgb(255,255,128);box-shadow:inset 0 0 45px #0003}
+.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+button{border:1px solid #34465c;border-radius:11px;padding:12px 16px;font-size:15px;font-weight:650;cursor:pointer;background:#253349;color:#eaf0fa;flex:1}
+button.primary{background:#4182f2;border-color:#4182f2;color:#fff}button:disabled{opacity:.5;cursor:not-allowed}
+#msg{font-size:13px;color:#a9bdd4;min-height:20px;margin-top:13px}
+.chip{font-size:11px;display:inline-block;border-radius:40px;padding:4px 9px;background:#23334a;color:#b6c9e4}
+.note{font-size:12px;line-height:1.55;color:#93a4be}
+</style>
+</head>
+<body>
+<header class="row"><div><h1>X10Pro Display Control</h1><div class="sub">LCD TCON · RGB Gain · Backlight</div></div><span class="chip" id="connect">Connecting</span></header>
+<div class="card">
+  <h2>RGB color balance</h2>
+  <div class="group" style="--accent:#f26e79"><div class="row"><label for="r">Red Gain</label><strong id="rv">100%</strong></div><input id="r" type="range" min="0" max="100" value="100"></div>
+  <div class="group" style="--accent:#5bd2a5"><div class="row"><label for="g">Green Gain</label><strong id="gv">100%</strong></div><input id="g" type="range" min="0" max="100" value="100"></div>
+  <div class="group" style="--accent:#629efc"><div class="row"><label for="b">Blue Gain</label><strong id="bv">50%</strong></div><input id="b" type="range" min="0" max="100" value="50"></div>
+</div>
+<div class="card"><h2>Screen backlight</h2><div class="group" style="--accent:#f2c563"><div class="row"><label for="light">Brightness</label><strong id="lightv">100%</strong></div><input id="light" type="range" min="0" max="100" value="100"></div></div>
+<div class="card"><h2>Color preview (approximate)</h2><div class="preview" id="preview"></div><p class="note">Changes are sent to the LCD while dragging. Preview expires after 120 seconds unless saved. Preview is not the actual camera image.</p>
+<div class="actions"><button id="restore">Original RGB</button><button class="primary" id="save">Save to camera</button></div><div id="msg">Loading camera settings…</div></div>
+<p class="note">HTTP works only on the camera hotspot. Credentials travel over unencrypted local HTTP. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
+<script>
+(()=>{
+const ids=['r','g','b','light'];const el=id=>document.getElementById(id);
+let busy=false,queued=false,debounce=null,initialized=false,saving=false;
+function values(){return Object.fromEntries(ids.map(k=>[k,Number(el(k).value)]));}
+function draw(){const v=values();ids.forEach(k=>el(k+'v').textContent=v[k]+'%');el('preview').style.background=`rgb(${Math.round(255*v.r/100)},${Math.round(255*v.g/100)},${Math.round(255*v.b/100)})`;el('preview').style.opacity=Math.max(.12,v.light/100);}
+function message(s){el('msg').textContent=s;}
+async function call(mode){const params=new URLSearchParams({...values(),mode});const ctl=new AbortController();const timeout=setTimeout(()=>ctl.abort(),4000);
+try{const resp=await fetch('/cgi-bin/api.cgi',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:params.toString(),signal:ctl.signal,cache:'no-store'});if(!resp.ok)throw Error('HTTP '+resp.status);const j=await resp.json();if(!j.ok)throw Error(j.error||'API error');return j;}finally{clearTimeout(timeout);}}
+async function preview(){if(busy){queued=true;return;}busy=true;try{await call('preview');el('connect').textContent='Connected';message('Preview applied. Press Save to keep after reboot.');}catch(e){el('connect').textContent='Error';message('Preview failed: '+e.message);}finally{busy=false;if(queued){queued=false;preview();}}}
+function schedule(){draw();if(!initialized||saving)return;clearTimeout(debounce);debounce=setTimeout(preview,230);}
+ids.forEach(k=>el(k).addEventListener('input',schedule));
+el('restore').addEventListener('click',()=>{el('r').value=100;el('g').value=100;el('b').value=100;el('light').value=85;schedule();message('Factory-like preview. Press Save if you want to keep it.');});
+el('save').addEventListener('click',async()=>{clearTimeout(debounce);saving=true;el('save').disabled=true;try{await call('save');el('connect').textContent='Saved';message('Saved to /data. The DHCP callback will restore it after reboot.');}catch(e){message('Save failed: '+e.message);}finally{saving=false;el('save').disabled=false;}});
+(async()=>{try{const resp=await fetch('/cgi-bin/api.cgi',{cache:'no-store'});if(!resp.ok)throw Error('HTTP '+resp.status);const j=await resp.json();if(!j.ok)throw Error(j.error||'Read failed');for(const k of ids)el(k).value=j[k];draw();initialized=true;el('connect').textContent='Connected';message('Loaded current LCD values. Saved Blue: '+j.saved.b+'%');}catch(e){el('connect').textContent='Offline';message('Cannot read camera: '+e.message);}})();
+})();
+</script>
+</body>
+</html>
