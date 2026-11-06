@@ -235,4 +235,10 @@ BusyBox udhcpd nạp cấu hình nằm trên /data khi hotspot khởi chạy. V�
 
 ## RGB Web UI (experimental)
 
-Có thể chỉnh RGB/backlight trực tiếp trên X10Pro qua BusyBox HTTP CGI, không flash firmware. Xem [hướng dẫn và mã nguồn Web UI](./webui/README.md). **Chưa kiểm chứng toàn bộ quy trình cài và điều chỉnh R/G trên camera thật; hãy kiểm tra quyền truy cập và sao lưu trước khi dùng.**
+- [Hướng dẫn đầy đủ cài đặt và sử dụng RGB Web UI](./webui/README.md) — giao diện `http://192.168.169.1:8088/`, **không Basic Auth**.
+- **Chỉ chạy một installer:** [`webui/install-standalone.sh`](./webui/install-standalone.sh) dùng qua Telnet, tự gọi [`webui/install-webui.sh`](./webui/install-webui.sh). File `install-webui.sh` dùng riêng khi đã chép đủ package.
+- Web UI thay thế callback Blue-only tại `/data/x10pro-display/udhcpd-notify.sh`; từ lúc đó **chỉnh RGB trong Web UI**, không tiếp tục thay callback bằng đoạn Blue-only phía trên.
+- Trước khi cài, cần có DHCP `notify_file` theo hướng dẫn ở mục 3. Nếu Wi-Fi/DHCP tắt thì Web UI cũng không hoạt động.
+- Xem README Web UI để biết cách gỡ Basic Auth từ bản cũ, cài đặt, kiểm tra, khôi phục và giới hạn bảo mật.
+
+**Chưa xác minh end-to-end trên máy thật sau khi cài bản Web UI mới; hãy sao lưu trước khi thử chỉnh Red/Green.**
