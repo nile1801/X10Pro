@@ -55,25 +55,27 @@ cp "$SRC/udhcpd-notify.sh" "$BASE/udhcpd-notify.sh"
 chmod 644 "$WEB/index.html"
 chmod 700 "$WEB/cgi-bin/api.cgi" "$BASE/udhcpd-notify.sh"
 
-# Generate an initial password locally. Never put the credential in GitHub.
-if [ ! -f "$BASE/httpd.conf" ]; then
-    command -v od >/dev/null || { echo 'ERROR: od missing; cannot generate web password' >&2; exit 1; }
-    command -v tr >/dev/null || { echo 'ERROR: tr missing; cannot generate web password' >&2; exit 1; }
-    PASS=$(dd if=/dev/urandom bs=12 count=1 2>/dev/null | od -An -tx1 | tr -d ' \n')
-    [ "${#PASS}" = 24 ] || { echo 'ERROR: random password generation failed' >&2; exit 1; }
-    printf '/:admin:%s\n' "$PASS" > "$BASE/httpd.conf"
-    chmod 600 "$BASE/httpd.conf"
-    echo "WEB USER: admin"
-    echo "WEB PASSWORD: $PASS"
-else
-    echo 'Existing web password preserved in /data/x10pro-display/httpd.conf'
+# No Basic Auth by request. Only this Web UI's dedicated config is modified.
+# Back up any old credentials once, then clear them. Empty config = no login.
+if [ -s "$BASE/httpd.conf" ] && [ ! -f "$BASE/httpd.conf.auth.bak" ]; then
+    cp -p "$BASE/httpd.conf" "$BASE/httpd.conf.auth.bak"
 fi
+: > "$BASE/httpd.conf"
+chmod 600 "$BASE/httpd.conf"
+
+# Stop only the X10Pro Web UI listener when upgrading from an auth-enabled
+# installation; other httpd instances/ports (e.g. Viidure) are left alone.
+for pid in $(ps | grep '[h]ttpd' | grep '192[.]168[.]169[.]1:8088' | awk '{print $1}'); do
+    kill "$pid" 2>/dev/null || true
+done
+sleep 1
 
 # BusyBox httpd daemonizes without -f. If DHCP already ready, start now;
 # otherwise udhcpd callback will start it after the next lease notification.
 sh "$BASE/udhcpd-notify.sh"
 sync
 printf '\nInstalled. Wi-Fi URL: http://192.168.169.1:8088/\n'
-echo 'NOTE: Verify curl without credentials returns HTTP 401 before using the write API.'
+echo 'Basic Auth: DISABLED (no username/password). Use a trusted Wi-Fi hotspot only.'
+echo 'NOTE: curl without credentials should now return HTTP 200.'
 echo 'Saved preset:'
 cat "$BASE/display.conf"
