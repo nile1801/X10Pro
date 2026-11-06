@@ -1,0 +1,13 @@
+# X10Pro original device research dump — SHA-256 manifest
+# Source: x10pro_rgb_20261105_204720.tar.gz, captured 2026-11-05.
+# Note: the archive is a partial device dump, NOT a flashable update image.
+#
+# SHA256 (archive):
+3e6e293df65a49b46dc9c6f1fade05f76ec9d74793ca148f853cb717a363d4fa  x10pro_rgb_20261105_204720.tar.gz
+#
+# SHA256 of selected files INSIDE the archive:
+ddc617b16fe6ea2791bcb19ed4211da587dc82c3831e089f114745603e7fc31a  images/mtd0.bin
+c462b3c839b6021c0c244e9e43896509ada5bff5430196a88a4f33d5aae2e816  images/mtd1.bin
+8997df8cca64060da91bd89261ac5c1f1d7f445c7b70b5d3567c299d0aff8bdc  images/sar_running.elf
+a136038797ef74b5589e75ccc6b547da914ea068e2a26560e5841f9d0da6abff  images/running_device_tree.dtb
+664f0f1a2f24cb9d685ab56c105bd8d9a977fcf10d575ee4ab40cba57e3ac86f  images/proc_device_tree.tar
