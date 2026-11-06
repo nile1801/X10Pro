@@ -1,5 +1,7 @@
 #!/bin/sh
-# Standalone installer: paste entire file into X10Pro Telnet shell as root.
+# All-in-one X10Pro Web UI installer: embeds all 4 package files, then
+# invokes install-webui.sh. Requires the DHCP notify_file hook to be set up.
+# Paste/transfer this one file to the camera and execute as root.
 set -e
 PKG=/tmp/x10pro-webui-package
 mkdir -p "$PKG/www/cgi-bin"
@@ -102,7 +104,7 @@ button.primary{background:#4182f2;border-color:#4182f2;color:#fff}button:disable
 <div class="card"><h2>Screen backlight</h2><div class="group" style="--accent:#f2c563"><div class="row"><label for="light">Brightness</label><strong id="lightv">100%</strong></div><input id="light" type="range" min="0" max="100" value="100"></div></div>
 <div class="card"><h2>Color preview (approximate)</h2><div class="preview" id="preview"></div><p class="note">Changes are sent to the LCD while dragging. Preview expires after 120 seconds unless saved. Preview is not the actual camera image.</p>
 <div class="actions"><button id="restore">Original RGB</button><button class="primary" id="save">Save to camera</button></div><div id="msg">Loading camera settings…</div></div>
-<p class="note">HTTP works only on the camera hotspot. Credentials travel over unencrypted local HTTP. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
+<p class="note">HTTP works only on the camera hotspot. No login is required. Anyone connected to the camera Wi-Fi can change LCD settings. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
 <script>
 (()=>{
 const ids=['r','g','b','light'];const el=id=>document.getElementById(id);
@@ -282,26 +284,28 @@ cp "$SRC/udhcpd-notify.sh" "$BASE/udhcpd-notify.sh"
 chmod 644 "$WEB/index.html"
 chmod 700 "$WEB/cgi-bin/api.cgi" "$BASE/udhcpd-notify.sh"
 
-# Generate an initial password locally. Never put the credential in GitHub.
-if [ ! -f "$BASE/httpd.conf" ]; then
-    command -v od >/dev/null || { echo 'ERROR: od missing; cannot generate web password' >&2; exit 1; }
-    command -v tr >/dev/null || { echo 'ERROR: tr missing; cannot generate web password' >&2; exit 1; }
-    PASS=$(dd if=/dev/urandom bs=12 count=1 2>/dev/null | od -An -tx1 | tr -d ' \n')
-    [ "${#PASS}" = 24 ] || { echo 'ERROR: random password generation failed' >&2; exit 1; }
-    printf '/:admin:%s\n' "$PASS" > "$BASE/httpd.conf"
-    chmod 600 "$BASE/httpd.conf"
-    echo "WEB USER: admin"
-    echo "WEB PASSWORD: $PASS"
-else
-    echo 'Existing web password preserved in /data/x10pro-display/httpd.conf'
+# No Basic Auth by request. Only this Web UI's dedicated config is modified.
+# Back up any old credentials once, then clear them. Empty config = no login.
+if [ -s "$BASE/httpd.conf" ] && [ ! -f "$BASE/httpd.conf.auth.bak" ]; then
+    cp -p "$BASE/httpd.conf" "$BASE/httpd.conf.auth.bak"
 fi
+: > "$BASE/httpd.conf"
+chmod 600 "$BASE/httpd.conf"
+
+# Stop only the X10Pro Web UI listener when upgrading from an auth-enabled
+# installation; other httpd instances/ports (e.g. Viidure) are left alone.
+for pid in $(ps | grep '[h]ttpd' | grep '192[.]168[.]169[.]1:8088' | awk '{print $1}'); do
+    kill "$pid" 2>/dev/null || true
+done
+sleep 1
 
 # BusyBox httpd daemonizes without -f. If DHCP already ready, start now;
 # otherwise udhcpd callback will start it after the next lease notification.
 sh "$BASE/udhcpd-notify.sh"
 sync
 printf '\nInstalled. Wi-Fi URL: http://192.168.169.1:8088/\n'
-echo 'NOTE: Verify curl without credentials returns HTTP 401 before using the write API.'
+echo 'Basic Auth: DISABLED (no username/password). Use a trusted Wi-Fi hotspot only.'
+echo 'NOTE: curl without credentials should now return HTTP 200.'
 echo 'Saved preset:'
 cat "$BASE/display.conf"
 X10PRO_EMBED_3_END
