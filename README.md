@@ -249,3 +249,8 @@ BusyBox udhcpd nạp cấu hình nằm trên /data khi hotspot khởi chạy. V�
 - [Bản dump firmware nghiên cứu, SHA-256 và cách lưu bản gốc](./firmware/README.md).
 - Đã xác minh từ chính camera: `mtd0` (bootloader), `mtd1` (root SquashFS), `sar` và device tree. **Đây không phải OTA .efw hoặc backup flash đầy đủ, tuyệt đối không flash trực tiếp.**
 - Archive nhị phân ~14 MB **chưa được push lên GitHub** qua tích hợp hiện tại. Thư mục `firmware/` có manifest và PowerShell script xác minh SHA-256 để anh đẩy bản dump gốc từ laptop sau khi rà soát quyền phân phối/dữ liệu nhạy cảm.
+
+
+### Wi-Fi stay-on (experimental, Viidure app mode)
+
+Web UI hiện có hai nút **Bật giữ Wi-Fi (thử nghiệm)** (`GET /app/enterrecorder`) và **Tắt / khôi phục màn hình** (`GET /app/exitrecorder`). Người dùng đã thấy hotspot chạy hơn 30 phút sau chuỗi lệnh mở chế độ app, nhưng **camera không nhận thao tác màn hình** khi ở mode đó; chưa xác nhận lệnh nào duy trì Wi-Fi. Nút không tự chạy sau reboot và không phải bản vá RTSP/heartbeat. Xem [hướng dẫn thử nghiệm](./webui/README.md#4a-giữ-wi-fi-bằng-chế-độ-viidure-thử-nghiệm--không-phải-rtsp-stream).
