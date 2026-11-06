@@ -33,7 +33,7 @@ button.primary{background:#4182f2;border-color:#4182f2;color:#fff}button:disable
 <div class="card"><h2>Screen backlight</h2><div class="group" style="--accent:#f2c563"><div class="row"><label for="light">Brightness</label><strong id="lightv">100%</strong></div><input id="light" type="range" min="0" max="100" value="100"></div></div>
 <div class="card"><h2>Color preview (approximate)</h2><div class="preview" id="preview"></div><p class="note">Changes are sent to the LCD while dragging. Preview expires after 120 seconds unless saved. Preview is not the actual camera image.</p>
 <div class="actions"><button id="restore">Original RGB</button><button class="primary" id="save">Save to camera</button></div><div id="msg">Loading camera settings…</div></div>
-<p class="note">HTTP works only on the camera hotspot. Credentials travel over unencrypted local HTTP. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
+<p class="note">HTTP works only on the camera hotspot. No login is required. Anyone connected to the camera Wi-Fi can change LCD settings. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
 <script>
 (()=>{
 const ids=['r','g','b','light'];const el=id=>document.getElementById(id);
