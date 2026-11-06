@@ -1,0 +1,436 @@
+[    0.000000] [start_kernel] timestamp: 1212226 us 
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.19.73 (user12@ubuntu-123) (gcc version 7.4.0 (Buildroot 2019.02.11)) #3 PREEMPT Mon Nov 3 18:01:06 CST 2025
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c53c7d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: N7
+[    0.000000] earlycon: early_lombo0 at MMIO32 0x04003000 (options '115200n8')
+[    0.000000] bootconsole [early_lombo0] enabled
+[    0.000000] [BOOT_LOGO] early_boot_logo:71 phys_bl_start = 0x41800000, phys_bl_size = 0x384004
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] [BOOT_LOGO] lombo_boot_logo_init:108 lombo_boot_logo_start = 0xc1800000, lombo_boot_logo_end = 0xc1b84004
+[    0.000000] Reserved 76 MiB for carveout heap at 0x43400000
+[    0.000000] On node 0 totalpages: 32768
+[    0.000000]   Normal zone: 256 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 32768 pages, LIFO batch:7
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] random: get_random_bytes called from start_kernel+0x55/0x2b4 with crng_init=0
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 32512
+[    0.000000] Kernel command line: init=/linuxrc loglevel=3 console=ttySLB0,115200 root=/dev/mtdblock1 rootfstype=squashfs rootwait earlycon=early_lombo,mmio32,0x04003000,115200n8 initcall_debug=0 consoleblank=0 disp=N boot=2 boot_logo=0x41800000,0x00384004 mtdparts=lombo-nor:768k@0x40000(leaver_a),11328k@0x4c0000(root_sq),128k@0xfd0000(misc),64k@0xff0000(userdata) lombo_mount=/dev/block/userdata@/data@jffs2
+[    0.000000] [drm] boot_disp_cmdline=N
+[    0.000000] Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 42964K/131072K available (3110K kernel code, 187K rwdata, 1428K rodata, 100K init, 346K bss, 88108K reserved, 0K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xc8800000 - 0xff800000   ( 880 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xc8000000   ( 128 MB)
+[    0.000000]     modules : 0xbf800000 - 0xc0000000   (   8 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0311b90   (3111 kB)
+[    0.000000]       .init : 0xc04a1000 - 0xc04ba000   ( 100 kB)
+[    0.000000]       .data : 0xc04ba000 - 0xc04e8c60   ( 188 kB)
+[    0.000000]        .bss : 0xc04e8c60 - 0xc053f84c   ( 347 kB)
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] 	Tasks RCU enabled.
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000005] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000012] Switching to timer-based delay loop, resolution 41ns
+[    0.000200] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=240000)
+[    0.000209] pid_max: default: 4096 minimum: 301
+[    0.000317] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000325] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000706] CPU: Testing write buffer coherency: ok
+[    0.001194] Setting up static identity map for 0x40008200 - 0x40008238
+[    0.001283] rcu: Hierarchical SRCU implementation.
+[    0.007876] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.008329] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.008341] futex hash table entries: 16 (order: -4, 448 bytes)
+[    0.008414] pinctrl core: initialized pinctrl subsystem
+[    0.008533] [CLK] lombo_clk_init:370 lombo clk init finished
+[    0.009259] NET: Registered protocol family 16
+[    0.009583] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.011417] [pinctrl_lombo] lombo_gpio_pinctrl_probe:1603 pinctrl bank size: 5.
+[    0.013002] [pinctrl_lombo] lombo_gpio_eint_init:1569 gpa clk: 1, div: 0
+[    0.013082] [pinctrl_lombo] lombo_gpio_eint_init:1569 gpc clk: 1, div: 0
+[    0.013130] [pinctrl_lombo] lombo_gpio_eint_init:1569 gpe clk: 1, div: 0
+[    0.013493] [lombo_xio] lombo_xio_pinctrl_probe:99 pinctrl_sio bank size: 1.
+[    0.015254] [lombo_xio] lombo_xio_pinctrl_probe:99 pinctrl_eio bank size: 1.
+[    0.016056] DCDC0: supplied by regulator-dummy
+[    0.016377] DCDC1: supplied by regulator-dummy
+[    0.016929] (NULL device *): deviceless supply vcc_dcdc1 not found, using dummy regulator
+[    0.043094] [PWM] lombo_pwm_probe:301 *****pwm driver init start...*****
+[    0.043216] [PWM] lombo_pwm_probe:336 *****pwm driver init success*****
+[    0.043746] lb_nx_usbphy 2200400.usbphy0: lb_nx_usbphy_probe start...
+[    0.043788] lb_nx_usbphy 2200400.usbphy0: lb_nx_usbphy_probe done.
+[    0.043855] lb_nx_usbphy 2300400.usbphy1: lb_nx_usbphy_probe start...
+[    0.043881] lb_nx_usbphy 2300400.usbphy1: lb_nx_usbphy_probe done.
+[    0.044790] [I2C] lombo_i2c_init:335 (ptrval): bus frequency set to 400 KHz
+[    0.045101] lombo-i2c 4000000.i2c: i2c-0: ic_clkrate = 49500000
+[    0.045108] lombo-i2c 4000000.i2c: i2c-0: 1 mode
+[    0.045915] [I2C] lombo_i2c_init:335 (ptrval): bus frequency set to 400 KHz
+[    0.046147] lombo-i2c 4001800.i2c: i2c-3: ic_clkrate = 49500000
+[    0.046154] lombo-i2c 4001800.i2c: i2c-3: 1 mode
+[    0.046405] videodev: Linux video capture interface: v2.00
+[    0.047159] [lombo_gpadc] gpadc_init_t_sensor:938 ldo_val is 0xf
+[    0.047180] [lombo_gpadc] lombo_gpadc_get_new_dt:1572 adc_key_conut:1, io_conut:4, adc_conut:1
+[    0.047191] [lombo_gpadc] lombo_gpadc_get_io_info:1042 channel_name not config
+[    0.047195] [lombo_gpadc] lombo_gpadc_get_io_info:1051 channel_name not config
+[    0.047203] [lombo_gpadc] lombo_gpadc_get_io_info:1065 io:1, dir:2, pud:1, drv:0, value:0, channel_name:(null), gpadc_flag:0
+[    0.047211] [lombo_gpadc] lombo_gpadc_get_io_info:1042 channel_name not config
+[    0.047215] [lombo_gpadc] lombo_gpadc_get_io_info:1051 channel_name not config
+[    0.047222] [lombo_gpadc] lombo_gpadc_get_io_info:1065 io:3, dir:2, pud:1, drv:0, value:0, channel_name:(null), gpadc_flag:0
+[    0.047229] [lombo_gpadc] lombo_gpadc_get_io_info:1042 channel_name not config
+[    0.047233] [lombo_gpadc] lombo_gpadc_get_io_info:1051 channel_name not config
+[    0.047240] [lombo_gpadc] lombo_gpadc_get_io_info:1065 io:4, dir:2, pud:1, drv:0, value:0, channel_name:(null), gpadc_flag:0
+[    0.047247] [lombo_gpadc] lombo_gpadc_get_io_info:1042 channel_name not config
+[    0.047251] [lombo_gpadc] lombo_gpadc_get_io_info:1051 channel_name not config
+[    0.047259] [lombo_gpadc] lombo_gpadc_get_io_info:1065 io:5, dir:2, pud:-22, drv:0, value:1, channel_name:(null), gpadc_flag:0
+[    0.047275] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1234 vol_max = 4095
+[    0.047280] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1267 vol_thre = 4025
+[    0.047290] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[0].value:28
+[    0.047296] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[1].value:59
+[    0.047301] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[2].value:60
+[    0.047306] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[3].value:103
+[    0.047311] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[4].value:108
+[    0.047316] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1330 key[0].input_val[5].value:139
+[    0.047321] [lombo_gpadc] lombo_gpadc_get_adc_key_info:1346 adc_key_delay_time use 30ms
+[    0.047526] input: lombo-key as /devices/virtual/input/input0
+[    0.048795] [lombo_gpadc] lombo_gpadc_probe:1913 Lombo GPADC probe success
+[    0.049165] Advanced Linux Sound Architecture Driver Initialized.
+[    0.051141] nx_usb 2200000.usb0: lb_hdc_nx_probe start...
+[    0.051360] lb_hdc lb_hdc.0: lb_hdc_probe start...
+[    0.051417] lb_hdc lb_hdc.0: doesn't support host
+[    0.051425] lb_hdc lb_hdc.0: udc_start start...
+[    0.051668] lb_hdc lb_hdc.0: udc_start done.
+[    0.051678] nx_usb 2200000.usb0: unsupport event 2
+[    0.065455] lb_hdc lb_hdc.0: lb_hdc_probe done.
+[    0.065587] nx_usb 2200000.usb0: lb_hdc_nx_probe done.
+[    0.065740] nx_usb 2300000.usb1: lb_hdc_nx_probe start...
+[    0.065964] lb_hdc lb_hdc.1: lb_hdc_probe start...
+[    0.066017] lb_hdc lb_hdc.1: doesn't support host
+[    0.066024] lb_hdc lb_hdc.1: no supported roles
+[    0.066080] nx_usb lb_hdc.1: lb_hdc_nx_probe start...
+[    0.066124] nx_usb lb_hdc.1: can't request region for resource [mem 0x02300000-0x023003ff]
+[    0.066130] nx_usb lb_hdc.1: err ioremap invalid
+[    0.066140] nx_usb lb_hdc.1: lb_hdc_nx_probe err 0
+[    0.066256] nx_usb 2300000.usb1: lb_hdc_nx_probe done.
+[    0.066952] input: lombo-pmc as /devices/platform/400c000.pmc/input/input1
+[    0.076993] [lombo_pmc] lombo_pmc_get_dt_params:911 DT no alive wake up en param
+[    0.077099] [lombo_pmc] lombo_pmc_probe:1059 lombo_pmc, lfeosc fanout enable
+[    0.077203] [lombo_pmc] lombo_pmc_probe:1067 lombo pmc init success!
+[    0.077877] osal 1.0 init success!
+[    0.077997] eimedia_bus_init ok
+[    0.078005] eimedia_device_init ok
+[    0.078259] os_mem probe ok!
+[    0.078455] clocksource: Switched to clocksource arch_sys_counter
+[    0.078820] uart0: ttySLB0 at MMIO 0x4003000 (irq = 24, base_baud = 1500000) is a LOMBO
+[    0.078838] console [ttySLB0] enabled
+[    0.078843] bootconsole [early_lombo0] disabled
+[    0.079017] [UART] lombo_uart_probe:1317 uart0: probe succeed, irq:24, clk in:24000000
+[    0.079249] uart3: ttySLB3 at MMIO 0x4004800 (irq = 25, base_baud = 1500000) is a LOMBO
+[    0.079417] [UART] lombo_uart_dma_request:192 uart3: not config dma channel for uart3-tx
+[    0.079424] [UART] lombo_uart_probe:1317 uart3: probe succeed, irq:25, clk in:24000000
+[    0.081660] NET: Registered protocol family 2
+[    0.082743] tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 6144 bytes)
+[    0.082766] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.082784] TCP bind hash table entries: 1024 (order: 2, 20480 bytes)
+[    0.082809] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.082885] UDP hash table entries: 128 (order: 0, 6144 bytes)
+[    0.082900] UDP-Lite hash table entries: 128 (order: 0, 6144 bytes)
+[    0.083020] NET: Registered protocol family 1
+[    0.084003] mbase init ok
+[    0.084008] mbase find N7V9 platform!
+[    0.084378] Mbase: bScanMBBorder: 0.
+[    0.084382] Mbase Mod init ok!
+[    0.084702] mlink init ok
+[    0.084975] Mlink Mod init!
+[    0.085267] vbuf init ok
+[    0.085550] Vbuf Mod init!
+[    0.085850] mfake init ok
+[    0.086157] Mfake Mod init!
+[    0.086469] region init ok
+[    0.086800] Region Mod init!
+[    0.087136] init ok
+[    0.087448] Audiocommon Mod init!
+[    0.087744] adec init ok
+[    0.088158] Adec Mod init!
+[    0.089375] aenc init ok
+[    0.089865] Aenc Mod init!
+[    0.090193] init ok
+[    0.090936] Audioin Mod init!
+[    0.091343] init ok
+[    0.091892] AUDIOOUT Mod init!
+[    0.093124] hvx init ok
+[    0.094478] isp init ok, cost time 753(us) 868(us)
+[    0.096226] failed to get cqi_mem_num,use default num
+[    0.096389] sclk_use_cnt[0 4] vgss pm:0
+[    0.096391] ei_vgss init ok
+[    0.097081] MdId 4 DevId 1 reset 0
+[    0.097093] viss_mcsi: MdId 4 DevId 1 pwdn 0
+[    0.097335] MdId 5 DevId 2 reset 0
+[    0.097346] viss_mcsi: MdId 5 DevId 2 pwdn 0
+[    0.149103] viss init ok! 52 ms
+[    0.150094] Initialise system trusted keyrings
+[    0.150572] workingset: timestamp_bits=29 max_order=14 bucket_order=0
+[    0.150858] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.150878] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.151937] Key type asymmetric registered
+[    0.151943] Asymmetric key parser 'x509' registered
+[    0.151960] io scheduler noop registered
+[    0.152004] io scheduler cfq registered (default)
+[    0.152383] pwm-backlight pwm3_backlight: pwm3_backlight supply power not found, using dummy regulator
+[    0.152405] pwm-backlight pwm3_backlight: Linked as a consumer to regulator.0
+[    0.154335] [drm] lombo_do_parse_boot_disp_cmdline: line=302
+[    0.154343] [drm] _parse_boot_fb:145. p=N, endp=null
+[    0.154450] lombo-drm disp@0: bound 1500000.dpu (ops 0xc035f688)
+[    0.154484] lombo-drm disp@0: bound 1560000.se (ops 0xc036002c)
+[    0.154514] lombo-drm disp@0: bound 1520000.dc (ops 0xc035f9a8)
+[    0.155956] lombo-drm disp@0: bound 15a0000.wb (ops 0xc0360578)
+[    0.156112] lombo-drm disp@0: bound 1600000.doss (ops 0xc0360748)
+[    0.156290] lombo-drm disp@0: bound 1602000.tcon (ops 0xc03609d4)
+[    0.156634] panel_fhlcd_mipi_probe 306: 
+[    0.156681] [drm] attaching dsi panel with id0
+[    0.156786] lombo-drm disp@0: bound 1606000.mipi_dsi (ops 0xc0360d98)
+[    0.156796] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+[    0.156800] [drm] No driver support for vblank timestamp query.
+[    0.156841] get_best_clk 213: clk[div5] 57506400->59400000
+[    0.159268] lombo-drm disp@0: fb0: DRM emulated frame buffer device
+[    0.162041] [drm] Initialized lombo 1.0.0 20191028 for disp@0 on minor 0
+[    0.208494] [drm] get panel id=0
+[    0.694361] Freeing boot_logo memory: 3604K
+[    0.695097] zram: Added device: zram0
+[    0.695301] [lombo_wireless_pm] configure_non_standard_pin:354 bt_enable property not found.
+[    0.695307] [lombo_wireless_pm] configure_control_pin:384 configure non-standard pin failed.
+[    0.695311] [lombo_wireless_pm] lombo_wireless_pm_probe:457 configure bt enable pin failed!
+[    0.696389] [SSPI_DBG][sspi_show_version][221]: sspi-version: 1.0.0-4f2d173 (Jun  4 2024, 17:38:51)
+[    0.697208] goodix-ts 0-0014: GTP Driver Version: V2.8.0.2<2017/12/14>
+[    0.697217] goodix-ts 0-0014: GTP I2C Address: 0x14
+[    0.697233] goodix-ts 0-0014: Unset touchscreen-size-x, use default
+[    0.697241] goodix-ts 0-0014: Unset touchscreen-size-y, use default
+[    0.697250] goodix-ts 0-0014: touch input parameters is [id x y w p]<1 1920 480 512 512>
+[    0.697257] goodix-ts 0-0014: int-sync enabled
+[    0.697275] goodix-ts 0-0014: key-map is [ac 9e 0 0]
+[    0.697312] goodix-ts 0-0014: 0-0014 supply vdd_ana not found, using dummy regulator
+[    0.697333] goodix-ts 0-0014: Linked as a consumer to regulator.0
+[    0.697342] goodix-ts 0-0014: 0-0014 supply vcc_i2c not found, using dummy regulator
+[    0.697359] goodix-ts 0-0014: No pinctrl found
+[    0.697375] goodix-ts 0-0014: Success request irq-gpio = 30
+[    0.697384] goodix-ts 0-0014: Success request rst-gpio = 29
+[    0.697389] goodix-ts 0-0014: Guitar reset
+[    0.788644] gtp_check: 2 1 0x63
+[    0.788650] gtp_check 2 1 gt9xx
+[    0.788818] goodix-ts 0-0014: Use slot report protocol
+[    0.789033] input: goodix-ts as /devices/virtual/input/input2
+[    0.789211] goodix-ts 0-0014: INT num 51, trigger type:2
+[    0.789318] goodix-ts 0-0014: create proc entry gt9xx_config success
+[    0.789340] ======== gt9xx probe finished ========
+[    0.789545] i2c /dev entries driver
+[    0.789931] [lombo_nu_m] axnu_init:2438 [NU_INFO]nvx_init
+[    0.790244] [lombo_nu_m] AXNU_SetCoreInit:857 [NU_INFO]nvx_core_ini
+[    0.790397] [lombo_nu_m] AXNU_ModInit:1846 [NU_INFO]AXNU_ModInit Success!
+[    0.791374] [lombo_dram_cooling] lombo_dram_probe:145 lombo_dram probe success
+[    0.791978] [WDT] lombo_wdt_probe:357 lombo watchdog registered (timeout: 16000, nowayout: 0)
+[    0.794118] logger: created 256K log 'log_main'
+[    0.794949] [DA380-GS] gsensor_check:659 app_gsensor_check 0 0 0x13
+[    0.794957] [DA380-GS] gsensor_check:669 app_gsensor_check 1 0 DA380
+[    0.795093] [DA380-GS] da380_gs_probe:720 MOTION_FLAG 0 0x00
+[    0.795097] [DA380-GS] da380_gs_probe:726 da380 gsensor i2c probe success
+[    0.796181] NET: Registered protocol family 17
+[    0.796334] ThumbEE CPU extension supported.
+[    0.796896] Doss Mod init!
+[    0.796902] doss init ok
+[    0.797468] Loading compiled-in X.509 certificates
+[    0.797659] [LOMBO_SPNTL] lombo_spntl_probe:776 ==========entered!
+[    0.797699] [LOMBO_NOR] nordrv-version: 2.0.0-350605d (Jun 11 2024, 15:20:45)
+[    0.797705] [LOMBO_NOR] norchip_init:679 spi-nor init freq:12000000
+[    0.797822] [LOMBO_NOR] norhal_device_reset:493 recognized spi-nor(0x684018),MID:0x68,MTID:0x40,CID:0x18
+[    0.797830] [LOMBO_NOR] norhal_addr_mode_cfg:436 capacity:16MB,page_size=256,sector_size=4096
+[    0.797837] [LOMBO_NOR] norhal_device_config:298 spi-nor id:0x684018 match id table(0x684018)
+[    0.797951] [LOMBO_NOR] norhal_tuning_bus_width:82 tuning bus width 4 successfully
+[    0.797957] [LOMBO_NOR] norhal_bus_init:383 use frequency 50000000,bus width 4
+[    0.797962] [LOMBO_NOR] norhal_feature_cfg:328 use individual bus width 1 for program
+[    0.797967] [LOMBO_NOR] norhal_feature_cfg:334 use individual frequency 12000000 for erase
+[    0.799912] [LOMBO_NOR] tuning:156 tuning success! window:[0, 63], delay_cells 31
+[    0.799921] [LOMBO_NOR] norhal_tuning_entry:199 best read latency:31
+[    0.799966] 4 cmdlinepart partitions found on MTD device lombo-nor
+[    0.799970] Creating 4 MTD partitions on "lombo-nor":
+[    0.799978] 0x000000040000-0x000000100000 : "leaver_a"
+[    0.800721] 0x0000004c0000-0x000000fd0000 : "root_sq"
+[    0.801400] 0x000000fd0000-0x000000ff0000 : "misc"
+[    0.802062] 0x000000ff0000-0x000001000000 : "userdata"
+[    0.802724] [LOMBO_SPNTL] lombo_spntl_probe:844 ==========probed seccessful!
+[    0.803008] hctosys: unable to open rtc device (rtc0)
+[    0.803270] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    0.806421] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    0.806523] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[    0.806529] cfg80211: failed to load regulatory.db
+[    0.806662] ALSA device list:
+[    0.806666]   No soundcards found.
+[    0.806860] [do_mount_root] timestamp: 2037705 us 
+[    0.808594] [do_mount_root done] timestamp: 2039434 us 
+[    0.808602] VFS: Mounted root (squashfs filesystem) readonly on device 31:1.
+[    0.808780] Freeing unused kernel memory: 100K
+[    0.808784] This architecture does not have kernel memory protection.
+[    0.808788] Run /linuxrc as init process
+[    0.808791] [run_init_process] timestamp: 2039638 us 
+[    1.153241] [rcS] timestamp: 2384079 us 
+[    1.154202] [DMA] lombo_dma_probe:1166 -----dma probe success-----
+[    1.155118] [SDC] lbsdc_probe:2823 1220000.sdc
+[    1.155233] [SDC] lbsdc_probe:2921 mmc0: base=0xf1220000
+[    1.155318] [SDC] lbsdc_probe:2978 mmc0:get default_pinctrl for sdc module
+[    1.178527] lombo-sdc 1220000.sdc: mmc0 - using dma, sw SDIO IRQ, host bw 4
+[    1.179018] [SDC] lbsdc_probe:2823 1221000.sdc
+[    1.179142] [SDC] lbsdc_probe:2921 mmc1: base=0xf1221000
+[    1.179228] [SDC] lbsdc_probe:2978 mmc1:get default_pinctrl for sdc module
+[    1.183668] random: fast init done
+[    1.204458] lombo-sdc 1221000.sdc: mmc1 - using dma, hw SDIO IRQ, host bw 4
+[    1.205145] [DMA] lombo_filter_fn:881 request channel-0 slave id 54, priority 2
+[    1.205168] [DMA] lombo_filter_fn:881 request channel-1 slave id 53, priority 2
+[    1.205631] Entered lombo_ac_codec_probe
+[    1.205803] lombo-sdc 1221000.sdc: PM domain sys will not be powered off
+[    1.206488] lombo-audio-n7v9 sound: lombo_ac_dai <-> lombo_dai mapping ok
+[    1.208062] input: lombo_power_wake as /devices/virtual/input/input3
+[    1.208373] [lombo_pmc_wake] lombo_power_wake_probe:501 ======== lombo power wake dev probe finished ========
+[    1.208629] mmc0: host does not support reading read-only switch, assuming write-enable
+[    1.210620] mmc0: SD card inserted
+[    1.210635] mmc0: new high speed SDXC card at address 59b4
+[    1.211708] mmcblk0: mmc0:59b4 USD00 58.9 GiB 
+[    1.212552]  mmcblk0:
+[    1.256669] [RTC] lombo_rtc_clk_src_init:146 rtc prcm has been initialized, skip it.
+[    1.256684] [RTC] lombo_rtc_clk_src_init:204 warn: lombo_rtc clock source is LFEOSC
+[    1.257049] lombo-rtc 400cc00.rtc: rtc core: registered lombo-rtc as rtc0
+[    1.257100] [RTC] lombo_rtc_probe:677 LOMBO RTC VERSION: 20
+[    1.270938] [DA380-GS] da380_dev_probe:733 gsensor acc max: 16383, min: -16384
+[    1.271105] input: lombo-gsensor as /devices/virtual/input/input4
+[    1.271282] [DA380-GS] da380_dev_probe:751 ======== da380 probe finished ========
+[    2.814628] [DA380-GS] da380_write_detect:296 buf [1] detect [1]
+[    2.815175] [DA380-GS] da380_write_measure_range:375 buf [3] range [3]
+[    3.436993] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51007, abrt: 0x1, device addr: 0x29
+[    3.437003] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.437051] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x29
+[    3.437056] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.437110] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x29
+[    3.437115] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.437161] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x29
+[    3.437166] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.437217] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x29
+[    3.437221] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.437267] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x29
+[    3.437271] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539145] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51007, abrt: 0x1, device addr: 0x1a
+[    3.539155] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539206] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.539211] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539267] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.539272] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539319] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.539324] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539377] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.539381] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.539428] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.539433] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560205] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560214] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560263] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560268] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560321] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560326] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560373] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560377] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560428] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560433] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.560478] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x31
+[    3.560483] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637381] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51007, abrt: 0x1, device addr: 0x1a
+[    3.637390] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637441] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.637446] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637500] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.637505] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637552] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.637557] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637607] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.637612] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    3.637657] [I2C] lombo_i2c_stop:60 err: i2c-3 int_pd: 0x51005, abrt: 0x1, device addr: 0x1a
+[    3.637662] [I2C] lombo_i2c_stop:168 err: (ptrval): no ask for the 7bit address
+[    5.487895] lombo-sdc 1221000.sdc: card claims to support voltages below defined range
+[    5.498716] mmc1: new high speed SDIO card at address 0001
+[    6.367737] random: crng init done
+[   15.866222] netlink: 'hostapd': attribute type 213 has an invalid length.
+[  713.874756] mmc0: card remove detected
+[  713.876110] mmc0: card 59b4 removed
+[  713.943801] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.036506] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.036572] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.036582] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.044916] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.125710] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.125760] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.125769] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.303058] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.303103] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.303113] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.396269] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396316] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396326] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396416] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 135237)
+[  714.396440] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 135237)
+[  714.396537] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396572] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396593] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396615] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396633] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396653] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396669] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396688] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.396704] FAT-fs (mmcblk0): FAT read failed (blocknr 3219)
+[  714.396723] FAT-fs (mmcblk0): FAT read failed (blocknr 2996)
+[  714.405306] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.405350] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.405359] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.533587] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533632] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533642] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533735] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 14796869)
+[  714.533760] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 14796869)
+[  714.533906] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533944] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533966] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.533987] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534007] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534026] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534043] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534063] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534080] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.534099] FAT-fs (mmcblk0): FAT read failed (blocknr 3052)
+[  714.683528] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683570] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683579] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683669] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 22130757)
+[  714.683694] FAT-fs (mmcblk0): unable to read inode block for updating (i_pos 22130757)
+[  714.683866] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683902] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683925] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683946] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683965] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.683985] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.684002] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.684021] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.684038] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.684057] FAT-fs (mmcblk0): FAT read failed (blocknr 3080)
+[  714.738632] FAT-fs (mmcblk0): unable to read boot sector to mark fs as dirty
+[  714.738648] FAT-fs (mmcblk0): bread failed in fat_clusters_flush
+[  771.797183] mmc0: host does not support reading read-only switch, assuming write-enable
+[  771.799105] mmc0: SD card inserted
+[  771.799122] mmc0: new high speed SDXC card at address 59b4
+[  771.800959] mmcblk0: mmc0:59b4 USD00 58.9 GiB 
+[  771.802228]  mmcblk0:
+[  787.562111] netlink: 'hostapd': attribute type 213 has an invalid length.

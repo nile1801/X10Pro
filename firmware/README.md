@@ -22,21 +22,6 @@ The original archive was obtained directly from the device and **was not modifie
 
 The device also reports partitions `mtd2` (`misc`) and `mtd3` (`userdata`), but **these were deliberately not collected**. Some flash regions are not represented in the MTD partition set. This is therefore **not a full SPI-NOR (16 MiB) backup**.
 
-## Archive upload status
-
-The large binary archive cannot be committed automatically via the available GitHub text-file integration. The repository currently contains this manifest and instructions, **not the original binary**. To publish the original archive without changing its bytes, download the original from the ChatGPT conversation and follow [publish-from-windows.ps1](./publish-from-windows.ps1) with the downloaded file on a Windows machine with authenticated Git access.
-
-Recommended repository destination: `firmware/raw/x10pro_rgb_20261105_204720.tar.gz`.
-
-Using Git CLI on a computer with credentials:
-
-```powershell
-git clone https://github.com/nile1801/X10Pro.git
-cd X10Pro
-powershell -ExecutionPolicy Bypass -File .\firmware\publish-from-windows.ps1 -FirmwarePath "C:\path\to\x10pro_rgb_20261105_204720.tar.gz"
-```
-
-The script checks the expected SHA-256 before making any commit and avoids committing an incorrect archive.
 
 ## Critical safety warnings
 

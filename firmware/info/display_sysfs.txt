@@ -1,0 +1,40 @@
+# DRM display device and panel
+crw-rw----    1 root     root       29,   0 Jan  1  1970 /dev/fb0
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/class/graphics/fb0 -> ../../devices/platform/disp@0/graphics/fb0
+
+/dev/dri:
+total 0
+crw-rw----    1 root     root      226,   0 Jan  1  1970 card0
+crw-rw----    1 root     root      226, 128 Jan  1  1970 renderD128
+
+/sys/class/drm:
+total 0
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 card0 -> ../../devices/platform/disp@0/drm/card0
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 card0-DSI-1 -> ../../devices/platform/disp@0/drm/card0/card0-DSI-1
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 renderD128 -> ../../devices/platform/disp@0/drm/renderD128
+-r--r--r--    1 root     root          4096 Nov  5 20:47 version
+### /sys/class/drm/card0-DSI-1/status
+connected
+### /sys/class/drm/card0-DSI-1/modes
+480x1920
+### /sys/class/graphics/fb0/name
+DRM emulated
+### /sys/class/graphics/fb0/bits_per_pixel
+16
+### /sys/class/graphics/fb0/virtual_size
+480,3840
+### /sys/class/graphics/fb0/stride
+960
+# Display platform devices
+### 1520000.dc
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/1520000.dc -> ../../../devices/platform/1520000.dc
+### 1560000.se
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/1560000.se -> ../../../devices/platform/1560000.se
+### 1600000.doss
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/1600000.doss -> ../../../devices/platform/1600000.doss
+### 1602000.tcon
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/1602000.tcon -> ../../../devices/platform/1602000.tcon
+### 1606000.mipi_dsi
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/1606000.mipi_dsi -> ../../../devices/platform/1606000.mipi_dsi
+### disp@0
+lrwxrwxrwx    1 root     root             0 Nov  5 20:47 /sys/bus/platform/devices/disp@0 -> ../../../devices/platform/disp@0

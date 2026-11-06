@@ -1,0 +1,12 @@
+X10Pro RGB panel investigation collector v1
+NO firmware writes, NO DRM commits, NO /dev/mem access.
+Excludes /data, /mnt/card recordings, and mtd2/mtd3.
+Output: /mnt/card/x10pro_rgb_20261105_204720
+SD free space: 39810304 KiB
+Collecting Linux metadata and symbol names...
+Copying running sar executable from PID 662
+Reading mtd0 from /dev/mtdblock0 (no device writes)
+mtd0 dump done
+Reading mtd1 from /dev/mtdblock1 (no device writes)
+mtd1 dump done
+Finished collection. Attempting a portable tar.gz for easy upload...

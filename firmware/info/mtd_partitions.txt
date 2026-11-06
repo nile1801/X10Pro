@@ -1,0 +1,5 @@
+dev:    size   erasesize  name
+mtd0: 000c0000 00001000 "leaver_a"
+mtd1: 00b10000 00001000 "root_sq"
+mtd2: 00020000 00001000 "misc"
+mtd3: 00010000 00001000 "userdata"

@@ -1,0 +1,1 @@
+Linux version 4.19.73 (user12@ubuntu-123) (gcc version 7.4.0 (Buildroot 2019.02.11)) #3 PREEMPT Mon Nov 3 18:01:06 CST 2025

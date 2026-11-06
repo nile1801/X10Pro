@@ -1,0 +1,1 @@
+lrwxrwxrwx    1 root     root             0 Nov  5 20:34 /proc/662/exe -> /usr/bin/sar

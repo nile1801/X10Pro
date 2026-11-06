@@ -1,0 +1,62 @@
+# Partition metadata (reading only)
+### /sys/class/mtd/mtd0
+name=leaver_a
+size=786432
+erasesize=4096
+offset=262144
+type=nor
+### /sys/class/mtd/mtd0ro
+name=unavailable
+size=unavailable
+erasesize=unavailable
+offset=unavailable
+type=unavailable
+### /sys/class/mtd/mtd1
+name=root_sq
+size=11599872
+erasesize=4096
+offset=4980736
+type=nor
+### /sys/class/mtd/mtd1ro
+name=unavailable
+size=unavailable
+erasesize=unavailable
+offset=unavailable
+type=unavailable
+### /sys/class/mtd/mtd2
+name=misc
+size=131072
+erasesize=4096
+offset=16580608
+type=nor
+### /sys/class/mtd/mtd2ro
+name=unavailable
+size=unavailable
+erasesize=unavailable
+offset=unavailable
+type=unavailable
+### /sys/class/mtd/mtd3
+name=userdata
+size=65536
+erasesize=4096
+offset=16711680
+type=nor
+### /sys/class/mtd/mtd3ro
+name=unavailable
+size=unavailable
+erasesize=unavailable
+offset=unavailable
+type=unavailable
+# MTD device files
+crw-rw----    1 root     root       90,   0 Jan  1  1970 /dev/mtd0
+crw-rw----    1 root     root       90,   1 Jan  1  1970 /dev/mtd0ro
+crw-rw----    1 root     root       90,   2 Jan  1  1970 /dev/mtd1
+crw-rw----    1 root     root       90,   3 Jan  1  1970 /dev/mtd1ro
+crw-rw----    1 root     root       90,   4 Jan  1  1970 /dev/mtd2
+crw-rw----    1 root     root       90,   5 Jan  1  1970 /dev/mtd2ro
+crw-rw----    1 root     root       90,   6 Jan  1  1970 /dev/mtd3
+crw-rw----    1 root     root       90,   7 Jan  1  1970 /dev/mtd3ro
+brw-rw----    1 root     root       31,   0 Jan  1  1970 /dev/mtdblock0
+brw-rw----    1 root     root       31,   1 Jan  1  1970 /dev/mtdblock1
+brw-rw----    1 root     root       31,   2 Jan  1  1970 /dev/mtdblock2
+brw-rw----    1 root     root       31,   3 Jan  1  1970 /dev/mtdblock3

@@ -1,0 +1,10 @@
+/dev/root / squashfs ro,noatime 0 0
+proc /proc proc rw,relatime 0 0
+tmpfs /dev tmpfs rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620,ptmxmode=666 0 0
+tmpfs /dev/shm tmpfs rw,relatime,mode=777 0 0
+tmpfs /tmp tmpfs rw,relatime 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,relatime,mode=755 0 0
+sysfs /sys sysfs rw,relatime 0 0
+/dev/block/userdata /data jffs2 rw,relatime 0 0
+/dev/mmcblk0 /mnt/card vfat rw,noatime,nodiratime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,usefree,errors=remount-ro 0 0
