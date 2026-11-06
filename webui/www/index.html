@@ -14,7 +14,7 @@ h1{font-size:24px;margin:0 0 5px}small,.sub{color:#97a5ba}.sub{font-size:13px;ma
 .group{margin:20px 0}.group:first-child{margin-top:6px}
 input[type=range]{width:100%;accent-color:var(--accent,#719fff);cursor:pointer;margin:12px 0 2px}
 .preview{height:105px;border-radius:12px;border:1px solid #455161;background:rgb(255,255,128);box-shadow:inset 0 0 45px #0003}
-.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.app-actions form{flex:1 1 220px}.app-actions button{width:100%;height:100%}.card a{color:#94b8ff}
 button{border:1px solid #34465c;border-radius:11px;padding:12px 16px;font-size:15px;font-weight:650;cursor:pointer;background:#253349;color:#eaf0fa;flex:1}
 button.primary{background:#4182f2;border-color:#4182f2;color:#fff}button:disabled{opacity:.5;cursor:not-allowed}
 #msg{font-size:13px;color:#a9bdd4;min-height:20px;margin-top:13px}
@@ -33,6 +33,22 @@ button.primary{background:#4182f2;border-color:#4182f2;color:#fff}button:disable
 <div class="card"><h2>Screen backlight</h2><div class="group" style="--accent:#f2c563"><div class="row"><label for="light">Brightness</label><strong id="lightv">100%</strong></div><input id="light" type="range" min="0" max="100" value="100"></div></div>
 <div class="card"><h2>Color preview (approximate)</h2><div class="preview" id="preview"></div><p class="note">Changes are sent to the LCD while dragging. Preview expires after 120 seconds unless saved. Preview is not the actual camera image.</p>
 <div class="actions"><button id="restore">Original RGB</button><button class="primary" id="save">Save to camera</button></div><div id="msg">Loading camera settings…</div></div>
+<div class="card" id="wifi-stay-on">
+<h2>Wi-Fi stay-on (experimental) · Chế độ Viidure</h2>
+<p class="note">Thử nghiệm trên X10Pro: chỉ gọi <code>/app/enterrecorder</code> và kiểm tra cổng 554 đã giúp hotspot duy trì hơn 30 phút, trong khi HTTP getproductinfo 5 giây/lần vẫn ngắt sau khoảng 7 phút. <b>Chưa xác định chính xác tác nhân giữ Wi-Fi.</b></p>
+<p class="note"><b>Cảnh báo:</b> Bật chế độ này có thể khóa thao tác trực tiếp trên màn hình gương với thông báo "vui lòng thao tác trong ứng dụng". Dùng nút Tắt bên dưới để gửi <code>/app/exitrecorder</code> và thử trả quyền điều khiển. Không tự bật sau reboot.</p>
+<div class="actions app-actions">
+<form action="http://192.168.169.1/app/enterrecorder" method="get" target="x10pro-vendor-reply" onsubmit="document.getElementById('wifi-mode-status').textContent='Đã gửi yêu cầu bật chế độ ứng dụng. Kiểm tra màn hình camera và hotspot; chưa xác nhận thành công.'">
+<button type="submit" class="primary">Bật giữ Wi-Fi (thử nghiệm)</button>
+</form>
+<form action="http://192.168.169.1/app/exitrecorder" method="get" target="x10pro-vendor-reply" onsubmit="document.getElementById('wifi-mode-status').textContent='Đã gửi yêu cầu thoát chế độ ứng dụng. Kiểm tra nút cảm ứng trên gương; chưa xác nhận thành công.'">
+<button type="submit">Tắt / khôi phục màn hình</button>
+</form>
+</div>
+<iframe name="x10pro-vendor-reply" title="Kết quả lệnh điều khiển camera" hidden></iframe>
+<p class="note" id="wifi-mode-status" role="status">Trạng thái hiện tại: chưa xác định. Trang web không đọc được phản hồi API port 80 do giới hạn same-origin.</p>
+<p class="note">Nếu nút không có tác dụng, mở trực tiếp <a href="http://192.168.169.1/app/exitrecorder" target="_blank" rel="noopener">lệnh thoát chế độ ứng dụng</a> trong tab mới. Không phải RTSP stream và không bảo đảm sửa lỗi Wi-Fi.</p>
+</div>
 <p class="note">HTTP works only on the camera hotspot. No login is required. Anyone connected to the camera Wi-Fi can change LCD settings. Do not expose port 8088 to other networks. Saving writes a tiny preset to /data.</p>
 <script>
 (()=>{
