@@ -242,3 +242,10 @@ BusyBox udhcpd nạp cấu hình nằm trên /data khi hotspot khởi chạy. V�
 - Xem README Web UI để biết cách gỡ Basic Auth từ bản cũ, cài đặt, kiểm tra, khôi phục và giới hạn bảo mật.
 
 **Chưa xác minh end-to-end trên máy thật sau khi cài bản Web UI mới; hãy sao lưu trước khi thử chỉnh Red/Green.**
+
+
+## Firmware dump (research only)
+
+- [Bản dump firmware nghiên cứu, SHA-256 và cách lưu bản gốc](./firmware/README.md).
+- Đã xác minh từ chính camera: `mtd0` (bootloader), `mtd1` (root SquashFS), `sar` và device tree. **Đây không phải OTA .efw hoặc backup flash đầy đủ, tuyệt đối không flash trực tiếp.**
+- Archive nhị phân ~14 MB **chưa được push lên GitHub** qua tích hợp hiện tại. Thư mục `firmware/` có manifest và PowerShell script xác minh SHA-256 để anh đẩy bản dump gốc từ laptop sau khi rà soát quyền phân phối/dữ liệu nhạy cảm.
