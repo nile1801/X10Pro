@@ -112,6 +112,31 @@ Nếu chỉ copy `install-webui.sh` mà không copy ba file còn lại, installe
 
 Khuyến nghị: khi thử R/G lần đầu, chỉ giảm nhẹ khoảng 5–10%, không kéo ngay về 0. Driver R/G tồn tại nhưng chưa được kiểm chứng bằng thử nghiệm trên phần cứng thật.
 
+
+## 4A. Giữ Wi-Fi bằng chế độ Viidure (thử nghiệm — không phải RTSP stream)
+
+Kết quả thực nghiệm mới nhất trên camera này:
+- Gọi `GET /app/getproductinfo` mỗi 5 giây vẫn bị mất kết nối sau khoảng **7 phút 33 giây**.
+- Sau khi chạy `GET /app/getmediainfo`, `GET /app/enterrecorder` và `Test-NetConnection -Port 554`, người dùng quan sát hotspot **không tự tắt trong hơn 30 phút**, nhưng camera hiển thị **“vui lòng thao tác trong ứng dụng”** và không thao tác được trên màn hình.
+- Vì nhiều thao tác được thực hiện cùng lúc, **chưa chứng minh riêng `enterrecorder` là nguyên nhân duy trì hotspot**. TCP port probe không phải RTSP session.
+- Trong `firmware/images/sar_running.elf` có hai endpoint thật: `/app/enterrecorder` và `/app/exitrecorder`, cùng chuỗi phản hồi `exit_recorder success/fail`.
+
+### Dùng trên Web UI
+
+- Bấm **Bật giữ Wi-Fi (thử nghiệm)**: trình duyệt sẽ gọi trực tiếp `http://192.168.169.1/app/enterrecorder` thông qua một khung ẩn. Web UI cổng 8088 không cần tự gọi HTTP loopback trên camera.
+- Bấm **Tắt / khôi phục màn hình**: trình duyệt gửi `http://192.168.169.1/app/exitrecorder`. Kiểm tra xem phím cảm ứng trên gương đã hoạt động trở lại chưa.
+- Do phản hồi từ API cổng 80 có khác origin so với Web UI cổng 8088, giao diện **chỉ xác nhận đã gửi request, không thể xác nhận trạng thái hay kết quả JSON**.
+- Hai nút **không lưu trạng thái vào flash, không tự gọi lại sau reboot**, không chạy RTSP stream và không tạo daemon mới.
+
+Có thể thử ngoài Web UI từ laptop:
+
+```powershell
+curl.exe --max-time 5 http://192.168.169.1/app/enterrecorder
+curl.exe --max-time 5 http://192.168.169.1/app/exitrecorder
+```
+
+**Cảnh báo:** Nếu màn hình gương bị khóa ở chế độ điều khiển từ ứng dụng, ưu tiên `/app/exitrecorder`; không thử patch `sar`, kill tiến trình hay flash firmware chỉ để thoát chế độ. Không coi 30 phút uptime là bản vá triệt để. Để phân biệt nguyên nhân, cần thử A/B từng lệnh (`getmediainfo`, `enterrecorder`, TCP 554) và theo dõi cả trạng thái nút cảm ứng, ghi hình, hotspot.
+
 ## 5. Kiểm tra sau cài và sau reboot
 
 Trong **PowerShell laptop**:
