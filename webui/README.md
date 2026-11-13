@@ -1,3 +1,5 @@
+> **Lưu ý phiên bản:** Tài liệu bên dưới mô tả **Display Control**, không cài Camera Color Lab. Xem [cài cả hai Web UI](../docs/INSTALL_TWO_WEBUIS.md) và [Camera Color Lab v1.3.1](../camera-color/README.md). Source Display Control trong repo đã thêm link `Camera Color Lab →`; link chỉ hoạt động khi Color Lab được cài riêng.
+
 # X10Pro RGB Web UI — hướng dẫn đầy đủ (không flash)
 
 Web UI điều chỉnh **Red / Green / Blue / LCD Backlight** của X10Pro LomboTech N7 ngay trên trình duyệt bằng BusyBox `httpd` + CGI shell, không cần PHP/Node.js, không cần Viidure để chỉnh màu.

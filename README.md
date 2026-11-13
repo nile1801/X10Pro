@@ -1,5 +1,21 @@
 # X10Pro LCD Color & Backlight — No-Flash Auto-Apply
 
+## Hai Web UI đang sử dụng (Display + Camera)
+
+| Trang | Địa chỉ khi nối Wi-Fi X10Pro | Điều khiển gì? |
+|---|---|---|
+| **Display Control** | [http://192.168.169.1:8088/](http://192.168.169.1:8088/) | RGB TCON/backlight của LCD, **không đổi file video** |
+| **Camera Color Lab v1.3.1** | [http://192.168.169.1:8088/camera.html](http://192.168.169.1:8088/camera.html) | TP9963 bank 0, 5 thanh ghi màu của camera, preview 30 giây / apply / restore / lưu profile |
+
+**[Hướng dẫn cài và nâng cấp cả hai Web UI](docs/INSTALL_TWO_WEBUIS.md)** · [Hướng dẫn Display](webui/README.md) · [Hướng dẫn Color Lab](camera-color/README.md).
+
+Trạng thái kiểm nghiệm ngày **13/11/2026** trên một X10Pro: TP9963 đọc/ghi và restore 5 thanh ghi thành công; saturation=0 cho hình đen trắng; Auto Apply sau reboot chạy qua **Wi-Fi/DHCP hook**, log `BOOT_PROFILE_APPLIED`, SAR vẫn chạy và tạo TS mới. *Không* suy ra đã chứng minh độ bền dài hạn hay hiệu quả màu tương đương các hãng khác. Firmware rootfs `/etc/init.d` read-only nên **auto apply phụ thuộc Wi-Fi/DHCP**, không bảo đảm khi hotspot không chạy.
+
+> Repo chứa mã Display Control. Các gói Color Lab v1.3 và bản vá giao diện v1.3.1 là các gói triển khai riêng; muốn nâng cấp Color Lab phải dùng đúng bộ cài đã phát hành, **không chỉ copy HTML**. Chỉ thao tác khi xe đỗ, nguồn ổn định và không cần video quan trọng.
+
+---
+
+
 Tự chỉnh **Blue Gain** và độ sáng màn hình gương XETABON X10Pro mà **không cần flash firmware**, bằng BusyBox DHCP callback (notify_file).
 
 ## Thiết bị đã kiểm chứng
