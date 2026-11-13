@@ -9,7 +9,7 @@
 | **Display Control** | [http://192.168.169.1:8088/](http://192.168.169.1:8088/) | RGB TCON/backlight của LCD, **không đổi file video** |
 | **Camera Color Lab v1.3.1** | [http://192.168.169.1:8088/camera.html](http://192.168.169.1:8088/camera.html) | TP9963 bank 0, 5 thanh ghi màu của camera, preview 30 giây / apply / restore / lưu profile |
 
-**[Hướng dẫn cài và nâng cấp cả hai Web UI](docs/INSTALL_TWO_WEBUIS.md)** · [Hướng dẫn Display](webui/README.md) · [Hướng dẫn Color Lab](camera-color/README.md).
+**[Hướng dẫn cài và nâng cấp cả hai Web UI](docs/INSTALL_TWO_WEBUIS.md)** · [Hướng dẫn Display](webui/README.md) · [Hướng dẫn Color Lab](camera-color/README.md). · [Manifest source/runtime và SHA-256](camera-color/SOURCE_RELEASE_MANIFEST.md).
 
 Trạng thái kiểm nghiệm ngày **13/11/2026** trên một X10Pro: TP9963 đọc/ghi và restore 5 thanh ghi thành công; saturation=0 cho hình đen trắng; Auto Apply sau reboot chạy qua **Wi-Fi/DHCP hook**, log `BOOT_PROFILE_APPLIED`, SAR vẫn chạy và tạo TS mới. *Không* suy ra đã chứng minh độ bền dài hạn hay hiệu quả màu tương đương các hãng khác. Firmware rootfs `/etc/init.d` read-only nên **auto apply phụ thuộc Wi-Fi/DHCP**, không bảo đảm khi hotspot không chạy.
 
