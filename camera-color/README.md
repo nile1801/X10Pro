@@ -4,7 +4,9 @@
 
 [Hướng dẫn cài và kiểm thử đầy đủ cả hai Web UI](../docs/INSTALL_TWO_WEBUIS.md).
 
-[Manifest kiểm chứng mã nguồn, checksum và tình trạng phát hành archive](SOURCE_RELEASE_MANIFEST.md). **Lưu ý:** source/runtime được khôi phục từ các gói v1.2/v1.3/v1.3.1 nhưng archive chưa được đưa lên GitHub; tài liệu trong repo hiện chưa đủ để cài Color Lab mới hoàn toàn từ GitHub.
+[Manifest kiểm chứng mã nguồn, checksum và tình trạng phát hành archive](SOURCE_RELEASE_MANIFEST.md).
+
+Để đưa archive source/runtime đã kiểm SHA lên nhánh `main`, có [script PowerShell đồng bộ source](sync-source-from-archive.ps1). Script cần archive `X10Pro_ColorLab_runtime_sources_v1.2-v1.3.1.tar.gz` từ gói đã tạo, Git và quyền push; nó clone repo mới, chỉ thêm `camera-color/src`, commit và push không force. **Lưu ý:** source/runtime được khôi phục từ các gói v1.2/v1.3/v1.3.1 nhưng archive chưa được đưa lên GitHub; tài liệu trong repo hiện chưa đủ để cài Color Lab mới hoàn toàn từ GitHub.
 
 ## Phiên bản và phụ thuộc
 
