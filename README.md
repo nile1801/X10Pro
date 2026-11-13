@@ -2,6 +2,8 @@
 
 ## Hai Web UI đang sử dụng (Display + Camera)
 
+> **Quan trọng khi đã cài Color Lab:** Không chạy lại các bước cài callback Blue-only ở phần hướng dẫn cũ bên dưới, cũng không chạy lại installer Display độc lập mà không kiểm tra hook. Những bước đó có thể thay thế `/data/x10pro-display/udhcpd-notify.sh` và làm mất `X10PRO_COLORLAB_BOOT_HOOK`, khiến profile camera không còn tự áp sau reboot. Nếu chỉ muốn cập nhật giao diện Camera, dùng hotfix UI v1.3.1.
+
 | Trang | Địa chỉ khi nối Wi-Fi X10Pro | Điều khiển gì? |
 |---|---|---|
 | **Display Control** | [http://192.168.169.1:8088/](http://192.168.169.1:8088/) | RGB TCON/backlight của LCD, **không đổi file video** |
