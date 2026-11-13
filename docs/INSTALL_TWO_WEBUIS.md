@@ -1,6 +1,9 @@
 # XETABON X10Pro — hướng dẫn cài hai Web UI
 
-Cập nhật: **13/11/2026**. Áp dụng cho máy kiểm chứng: LomboTech N7 / Linux 4.19.73 / `sar-Linux-v1.0alpha3`, Wi-Fi AP `192.168.169.1`. Chỉ cài khi xe đỗ, có nguồn ổn định, đã sao lưu cấu hình. **Không flash firmware, không sửa `/usr/bin/sar`.**
+Cập nhật: **13/11/2026**.
+
+> **Tình trạng mã nguồn:** README và hướng dẫn đã được commit. Các file chạy Camera Color Lab v1.2/v1.3/v1.3.1 đã được đối chiếu SHA-256 trong [manifest](../camera-color/SOURCE_RELEASE_MANIFEST.md), nhưng archive triển khai chưa được đưa vào GitHub. Để cài mới đầy đủ cần có các gói triển khai đã phát hành riêng, không chỉ clone repository này.
+ Áp dụng cho máy kiểm chứng: LomboTech N7 / Linux 4.19.73 / `sar-Linux-v1.0alpha3`, Wi-Fi AP `192.168.169.1`. Chỉ cài khi xe đỗ, có nguồn ổn định, đã sao lưu cấu hình. **Không flash firmware, không sửa `/usr/bin/sar`.**
 
 ## 1. Phân biệt hai trang
 
