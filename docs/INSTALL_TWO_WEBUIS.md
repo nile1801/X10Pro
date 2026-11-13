@@ -9,6 +9,8 @@ Cập nhật: **13/11/2026**. Áp dụng cho máy kiểm chứng: LomboTech N7 /
 
 **Đừng nhầm LCD RGB/backlight với thông số camera.** Giao diện không cần username/password; chỉ dùng qua Wi-Fi đáng tin cậy, không mở cổng 8088 ra Internet.
 
+**Thứ tự bắt buộc trên bản cài này:** Display Control trước, Camera Color Lab sau. **Không chạy lại installer Display Control** sau khi Color Lab đã cài vì installer Display có thể ghi đè file DHCP notify callback chứa boot hook của Camera. Máy đã chạy ổn cả hai trang thì chỉ áp dụng hotfix tương ứng, không cài lại toàn bộ.
+
 ## 2. Cài Display Control trước
 
 1. Telnet vào camera bằng tài khoản quản trị, xác minh driver:
