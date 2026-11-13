@@ -4,6 +4,8 @@
 
 [Hướng dẫn cài và kiểm thử đầy đủ cả hai Web UI](../docs/INSTALL_TWO_WEBUIS.md).
 
+[Manifest kiểm chứng mã nguồn, checksum và tình trạng phát hành archive](SOURCE_RELEASE_MANIFEST.md). **Lưu ý:** source/runtime được khôi phục từ các gói v1.2/v1.3/v1.3.1 nhưng archive chưa được đưa lên GitHub; tài liệu trong repo hiện chưa đủ để cài Color Lab mới hoàn toàn từ GitHub.
+
 ## Phiên bản và phụ thuộc
 
 - **Display Control**: source ở `webui/`, địa chỉ `http://192.168.169.1:8088/`.
