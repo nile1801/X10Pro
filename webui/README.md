@@ -1,3 +1,5 @@
+> **CẢNH BÁO:** Bộ cài Display này nên chạy **trước** Camera Color Lab. Nếu máy đã có Color Lab v1.3+, đừng chạy lại `install-standalone.sh` để nâng cấp LCD vì có thể ghi đè callback DHCP chứa `X10PRO_COLORLAB_BOOT_HOOK`; Auto Apply camera sẽ bị mất. Sao lưu và hợp nhất hook cẩn thận nếu thực sự cần nâng cấp LCD.
+
 > **Lưu ý phiên bản:** Tài liệu bên dưới mô tả **Display Control**, không cài Camera Color Lab. Xem [cài cả hai Web UI](../docs/INSTALL_TWO_WEBUIS.md) và [Camera Color Lab v1.3.1](../camera-color/README.md). Source Display Control trong repo đã thêm link `Camera Color Lab →`; link chỉ hoạt động khi Color Lab được cài riêng.
 
 # X10Pro RGB Web UI — hướng dẫn đầy đủ (không flash)
